@@ -1,0 +1,42 @@
+@import "../../assets/style/varibles";
+
+.cardContainer {
+  border: 1px solid $borderColor;
+  padding: 10px;
+  border-radius: $imgContainerRadius;
+  .imgContainer {
+    width: 100%;
+    position: relative;
+    .img {
+      border-radius: $imgContainerRadius;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hearth {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      cursor: pointer;
+      z-index: 9;
+      border-radius: 100%;
+    }
+  }
+  .infoContainer {
+    cursor: pointer;
+    .nameText {
+      margin-top: 8px;
+      font-size: $fontSizeNameText;
+      font-weight: $fontWeightBold;
+      margin-bottom: 4px;
+    }
+
+    .infoText {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-size: $fontSizeInfText;
+      font-weight: $fontWeightMedium;
+    }
+  }
+}

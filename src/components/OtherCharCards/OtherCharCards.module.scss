@@ -1,0 +1,44 @@
+@import "../../assets/style/varibles";
+
+.cardContainer {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  .img {
+    border-radius: $smallImgContainerRadius;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-width: 100px;
+  }
+
+  .infoContainer {
+    gap: 1rem;
+
+    .nameText {
+      font-size: $fontSizeOtherNameText;
+      font-weight: $fontWeightBold;
+    }
+
+    .infoText {
+      display: flex;
+      align-items: center;
+      font-size: $fontSizeInfText;
+      font-weight: $fontWeightMedium;
+      gap: 5px;
+    }
+  }
+}
+
+// Media Query
+@media (max-width: 800px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .otherContainer {
+    margin-top: 2rem;
+  }
+}

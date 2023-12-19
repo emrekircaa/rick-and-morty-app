@@ -1,0 +1,10 @@
+@import "../../assets/style/varibles";
+
+.gridContainer {
+  display: flex;
+  margin-top: $bigMargin;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 26rem));
+  gap: 36px;
+}
