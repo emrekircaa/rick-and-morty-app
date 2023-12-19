@@ -34,8 +34,6 @@ class APIClient {
 
       return response;
     } catch (error) {
-      // Hata durumlarına karşı gerekli işlemleri burada yapabilirsiniz
-      console.error("Error in API request:", error);
       throw error;
     }
   };
@@ -48,7 +46,6 @@ axios.interceptors.response.use(
   function (err: any) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     let message;
-    console.log("err", err, err.status, err.response);
     switch (err?.response?.status) {
       case 500:
         message = "Internal Server Error";

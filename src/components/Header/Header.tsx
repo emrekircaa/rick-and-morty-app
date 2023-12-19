@@ -1,15 +1,25 @@
 "use client";
 import React from "react";
 import style from "./Header.module.scss";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import { BackIcon } from "../Icons/Icons";
 function Navbar() {
   const router = useRouter();
+  const pathName = usePathname();
+
   return (
     <div className={style.headerContainer}>
-      <button className={style.button} onClick={() => router.back()}>
-        Click here to go back
-      </button>
-      <h3>Rick & Morthy</h3>
+      <div className={style.headerItem}>
+        {pathName !== "/" ? (
+          <div className={style.backButton} onClick={() => router.back()}>
+            <BackIcon />
+          </div>
+        ) : null}
+      </div>
+      <div className={style.headerItem}>
+        <h3>Rick & Morthy</h3>
+      </div>
+      <div className={style.headerItem}></div>
     </div>
   );
 }

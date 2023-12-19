@@ -5,10 +5,17 @@
   top: 0;
   display: flex;
   width: 100%;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 100px;
   background-color: white;
   border-bottom: 0.1rem solid rgba(17, 176, 200, 0.11);
   z-index: 99;
+  .backButton {
+    cursor: pointer;
+  }
+  .headerItem {
+    padding: 10px;
+    min-width: 200px;
+  }
 }

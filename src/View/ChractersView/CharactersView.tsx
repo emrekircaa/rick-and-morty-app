@@ -117,10 +117,8 @@ export default function CharactersView() {
             : data.length / itemsPerPage
         )
       );
-      console.log(filteredData);
     }
   }, [data, itemOffset, itemsPerPage, status]);
-  console.log(filteredData);
   return (
     <div className={style.CharactersViewContainer}>
       {loading ? (
