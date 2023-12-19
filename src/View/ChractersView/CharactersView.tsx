@@ -17,6 +17,7 @@ import { getLocations, getLocationsCharacters } from "@/services/location";
 import { getMultipleCharacters } from "@/services/characters";
 import { ILocation } from "@/models/ILocation";
 import CharacterCard from "@/components/CharacterCard/CharacterCard";
+import Loading from "@/components/Loading/Loading";
 
 interface Location {
   name: string;
@@ -101,7 +102,6 @@ export default function CharactersView() {
   useEffect(() => {
     if (data) {
       const endOffset = itemOffset + itemsPerPage;
-
       setFilteredData(
         status
           ? data
@@ -122,13 +122,12 @@ export default function CharactersView() {
   return (
     <div className={style.CharactersViewContainer}>
       {loading ? (
-        <p>loading...</p>
+        <Loading />
       ) : (
         <>
           {filteredData && filteredData.length > 0 ? (
             <>
               {/* title name */}
-
               <h2>
                 {filteredData &&
                   filteredData.length > 0 &&
@@ -177,6 +176,7 @@ export default function CharactersView() {
                     <div>Data not available</div>
                   )
                 ) : (
+                  // Mobil Swiper
                   <Swiper
                     slidesPerView={1}
                     centeredSlides

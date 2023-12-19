@@ -5,6 +5,7 @@ import PagePagination from "@/components/Pagination/Pagination";
 import { useState, useEffect } from "react";
 import { getLocations } from "@/services/location";
 import { ILocationResponse } from "@/models/ILocation";
+import Loading from "@/components/Loading/Loading";
 
 export default function LocationView() {
   const [pageCount, setPageCount] = useState<number>();
@@ -15,6 +16,7 @@ export default function LocationView() {
   const handlePageClick = (event: any) => {
     let number = event.selected + 1;
     setNextPage(number);
+    window.scrollTo(0, 0);
   };
 
   useEffect(() => {
@@ -23,9 +25,6 @@ export default function LocationView() {
         .then((res: any) => {
           setPageCount(res.info.pages);
           setData(res.results);
-          setTimeout(() => {
-            setLoading(false);
-          }, 500);
         })
         .then(() => setLoading(false));
     };
@@ -35,7 +34,7 @@ export default function LocationView() {
   return (
     <>
       {loading ? (
-        <div>Loading....</div>
+        <Loading />
       ) : (
         <>
           <div className={style.gridContainer}>

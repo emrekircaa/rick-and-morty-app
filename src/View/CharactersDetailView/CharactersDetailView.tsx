@@ -6,8 +6,9 @@ import { getCharacters, getMultipleCharacters } from "@/services/characters";
 import DetailCard from "@/components/DetailCard/DetailCard";
 import { getLocationsCharacters } from "@/services/location";
 import { useRouter } from "next/navigation";
-import { ICharacter } from "@/interface/ICharacter";
+import { ICharacter } from "@/models/ICharacter";
 import OtherCharCards from "@/components/OtherCharCards/OtherCharCards";
+import Loading from "@/components/Loading/Loading";
 
 function CharactersDetailView() {
   const router = useRouter();
@@ -68,7 +69,7 @@ function CharactersDetailView() {
   return (
     <div className={style.container}>
       {loading ? (
-        <p>Loading...</p>
+        <Loading />
       ) : (
         <>
           {item ? (
