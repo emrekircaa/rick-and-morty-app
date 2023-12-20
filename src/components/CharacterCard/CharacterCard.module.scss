@@ -1,13 +1,12 @@
-@import "../../assets/style/varibles";
 @mixin cardContainer($width, $margin) {
-  border: 1px solid $borderColor;
+  border: 1px solid #efefef;
   padding: 10px;
-  border-radius: $imgContainerRadius;
+  border-radius: 12px;
   .imgContainer {
     width: 100%;
     position: relative;
     .img {
-      border-radius: $imgContainerRadius;
+      border-radius: 12px;
       width: 100%;
       height: 100%;
       min-height: 300px;
@@ -32,8 +31,8 @@
     align-items: center;
     .nameText {
       margin-top: 8px;
-      font-size: $fontSizeNameText;
-      font-weight: $fontWeightBold;
+      font-size: 22px;
+      font-weight: 700;
       margin-bottom: 4px;
       max-width: 250px;
       width: 100%;
@@ -46,8 +45,8 @@
       display: flex;
       gap: 10px;
       align-items: center;
-      font-size: $fontSizeInfText;
-      font-weight: $fontWeightMedium;
+      font-size: 16px;
+      font-weight: 500;
     }
 
     div {

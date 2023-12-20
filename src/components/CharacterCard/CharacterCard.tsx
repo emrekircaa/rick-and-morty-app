@@ -28,7 +28,6 @@ const CharacterCard: React.FC<LocationCardProps> = ({
     const found = favItems.findIndex((item) => item.id == id);
     return found;
   };
-  console.log(data);
   return (
     <div className={isDetail ? style.cardContainerFull : style.cardContainer}>
       <div className={style.imgContainer}>
@@ -63,7 +62,7 @@ const CharacterCard: React.FC<LocationCardProps> = ({
                   ({data.location.name})
                 </span>
                 <span>
-                  {data.type && <span>{data.type && `- ${data.type} -`}</span>}
+                  {data.type && <span>{data.type && `${data.type} -`}</span>}
                   {data.gender}
                 </span>
               </div>

@@ -82,7 +82,7 @@ function CharactersDetailView() {
             {otherData && otherData.length > 0 ? (
               otherData.slice(0, 3).map((otherItem: any) => (
                 <OtherCharCards
-                  key={otherItem.id}
+                  key={otherItem.id.toString()}
                   handeClick={() => {
                     router.push(`${otherItem.id}`);
                   }}

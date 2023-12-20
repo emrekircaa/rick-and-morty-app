@@ -22,10 +22,6 @@ const OtherCharCards: React.FC<OtherCardProps> = ({ data, handeClick }) => {
         height={80}
         priority
       />
-      {/* name
-      dimensional
-      human/male
-       */}
       <div className={style.infoContainer}>
         <span className={style.nameText}>{data.name}</span>
         <div className={style.nameText}>{data.location.name}</div>

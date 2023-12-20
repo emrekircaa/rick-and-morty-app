@@ -5,8 +5,11 @@ import { useAppSelector } from "@/hooks/ReduxHook";
 import Loading from "@/components/Loading/Loading";
 import NoData from "@/components/NoData/NoData";
 import CharacterCard from "@/components/CharacterCard/CharacterCard";
+import { useRouter } from "next/navigation";
 
 function FavoriteView() {
+  const router = useRouter();
+
   const [loading, setLoading] = useState<boolean>(true);
   const favItems = useAppSelector((state) => state.fav.favItems);
 
@@ -23,7 +26,12 @@ function FavoriteView() {
       ) : favItems && favItems.length > 0 ? (
         <div className={style.container}>
           {favItems.map((item: any) => (
-            <CharacterCard data={item} isDetail={true} />
+            <CharacterCard
+              key={item.id.toString()}
+              data={item}
+              isDetail={true}
+              handleClick={() => router.push(`/character/detail/${item.id}`)}
+            />
           ))}
         </div>
       ) : (

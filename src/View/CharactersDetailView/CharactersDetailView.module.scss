@@ -1,9 +1,7 @@
-@import "../../../src/assets/style/varibles";
-
 .container {
   display: grid;
   grid-template-columns: minmax(400px, 600px) 400px;
-  border: 1px solid $borderColor;
+  border: 1px solid #efefef;
   border-top: none;
   max-width: 1024px;
   margin: auto;
@@ -28,47 +26,7 @@
   align-items: center;
   padding: 10px;
   .title {
-    margin-bottom: $smallMargin;
-  }
-  .otherContent {
-    margin-bottom: $smallMargin;
-    display: flex;
-    gap: 1rem;
-
-    .img {
-      border-radius: $smallImgContainerRadius;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      max-width: 100px;
-    }
-
-    .nameText {
-      font-size: $fontSizeOtherNameText;
-      font-weight: $fontWeightBold;
-    }
-
-    .infText {
-      display: flex;
-      align-items: center;
-      font-size: $fontSizeInfText;
-      font-weight: $fontWeightMedium;
-      gap: 5px;
-    }
-  }
-}
-
-.myLove {
-  position: relative;
-
-  .hearth {
-    position: absolute;
-    right: 5%;
-    top: 5%;
-    width: $smallIconSize;
-    height: $smallIconSize;
-    z-index: 9;
-    border-radius: 100%;
+    margin-bottom: 20px;
   }
 }
 
@@ -79,6 +37,6 @@
   }
 
   .otherContainer {
-    margin-top: $bigMargin;
+    margin-top: 2rem;
   }
 }

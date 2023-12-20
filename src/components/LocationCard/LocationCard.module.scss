@@ -1,23 +1,22 @@
-@import "../../assets/style/varibles";
 .cardContainer {
   padding: 10px;
   text-align: center;
-  border-radius: $imgContainerRadius;
-  border: 1px solid $borderColor;
+  border-radius: 12px;
+  border: 1px solid #efefef;
 
   .title {
     text-align: flex-start;
     margin-bottom: 8px;
-    font-size: $fontSizeOtherNameText;
-    font-weight: $fontWeightBold;
+    font-size: 18px;
+    font-weight: 700;
   }
 
   ul {
-    border: 1px solid $borderColor;
-    border-radius: $smallImgContainerRadius;
+    border: 1px solid #efefef;
+    border-radius: 10px;
 
     li {
-      border-bottom: 1px solid $borderColor;
+      border-bottom: 1px solid #efefef;
       padding: 10px !important;
 
       &:last-child {
@@ -44,11 +43,11 @@
     grid-template-columns: repeat(2, 1fr);
 
     .leftText {
-      font-size: $fontSizeInfText;
+      font-size: 16px;
       justify-content: flex-start;
       display: flex;
       font-weight: 300;
-      border-right: 1px solid $borderColor;
+      border-right: 1px solid #efefef;
       text-align: left;
     }
 
@@ -59,7 +58,7 @@
       justify-content: flex-start;
       text-overflow: ellipsis;
       overflow: hidden;
-      font-weight: $fontWeightMedium;
+      font-weight: 500;
       text-align: left;
     }
   }

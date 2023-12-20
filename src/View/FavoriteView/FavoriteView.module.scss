@@ -1,8 +1,6 @@
-@import "../../../src/assets/style/varibles";
-
 .container {
   display: flex;
-  margin-top: $bigMargin;
+  margin-top: 2rem;
   justify-content: flex-start;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;

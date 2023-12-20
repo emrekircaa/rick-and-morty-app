@@ -3,7 +3,7 @@ import style from "./CharactersView.module.scss";
 import PagePagination from "@/components/Pagination/Pagination";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { useAppDistpach, useAppSelector } from "@/hooks/ReduxHook";
+import { useAppSelector } from "@/hooks/ReduxHook";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -46,7 +46,6 @@ enum Color {
 }
 
 export default function CharactersView() {
-  const dispatch = useAppDistpach();
   const favItems = useAppSelector((state) => state.fav.favItems);
   const router = useRouter();
   const pathName = usePathname();
