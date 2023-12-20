@@ -10,10 +10,6 @@ type LocationInfo = {
   url: string;
 };
 
-type Episode = {
-  url: string;
-};
-
 export interface ICharacter {
   id: number;
   name: string;
@@ -24,7 +20,7 @@ export interface ICharacter {
   origin: Origin;
   location: LocationInfo;
   image: string;
-  episode: Episode[];
+  episode: string[];
   url: string;
   created: string;
 }

@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 import style from "./CharactersDetailView.module.scss";
 import { usePathname } from "next/navigation";
 import { getCharacters, getMultipleCharacters } from "@/services/characters";
-import DetailCard from "@/components/DetailCard/DetailCard";
 import { getLocationsCharacters } from "@/services/location";
 import { useRouter } from "next/navigation";
 import { ICharacter } from "@/models/ICharacter";
 import OtherCharCards from "@/components/OtherCharCards/OtherCharCards";
 import Loading from "@/components/Loading/Loading";
 import NoData from "@/components/NoData/NoData";
+import CharacterCard from "@/components/CharacterCard/CharacterCard";
 
 function CharactersDetailView() {
   const router = useRouter();
@@ -50,8 +50,7 @@ function CharactersDetailView() {
                     responseData.length > 0 &&
                     responseData?.filter(
                       (character: any) =>
-                        character.status === status &&
-                        character.id !== currentId
+                        character.status === status && character.id != currentId
                     );
                   const shuffledCharacters = filteredCharacters.sort(
                     () => Math.random() - 0.5
@@ -68,21 +67,13 @@ function CharactersDetailView() {
   }, [pathName, currentId]);
 
   return (
-    <div className={style.container}>
+    <>
       {loading ? (
         <Loading />
       ) : (
-        <>
+        <div className={style.container}>
           {item ? (
-            <DetailCard
-              status={item.status}
-              name={item.name}
-              src={item.image}
-              species={item.species}
-              type={item.type}
-              gender={item.gender}
-              origin={item.origin.name}
-            />
+            <CharacterCard data={item} isDetail={true} />
           ) : (
             <p>No data available for this character.</p>
           )}
@@ -95,18 +86,16 @@ function CharactersDetailView() {
                   handeClick={() => {
                     router.push(`${otherItem.id}`);
                   }}
-                  status={otherItem.status}
-                  name={otherItem.name}
-                  src={otherItem.image}
+                  data={otherItem}
                 />
               ))
             ) : (
               <NoData />
             )}
           </div>
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 }
 

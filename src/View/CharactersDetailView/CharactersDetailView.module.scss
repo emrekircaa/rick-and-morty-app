@@ -1,11 +1,23 @@
 @import "../../../src/assets/style/varibles";
 
 .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(400px, 600px) 400px;
   border: 1px solid $borderColor;
   border-top: none;
+  max-width: 1024px;
+  margin: auto;
+
+  @media screen and (min-width: 1025px) and (max-width: 1280px) {
+    grid-template-columns: 1fr 450px;
+  }
+
+  @media screen and (min-width: 961px) and (max-width: 1024px) {
+    grid-template-columns: 1fr 350px;
+  }
 
   @media screen and (max-width: 960px) {
+    display: flex;
     flex-direction: column !important;
   }
 }

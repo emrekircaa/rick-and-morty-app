@@ -1,11 +1,34 @@
 @import "../../../src/assets/style/varibles";
 .CharactersViewContainer {
   padding-left: 10px;
+  padding-right: 10px;
   margin-top: 20px;
-  h2 {
-    @media screen and (max-width: 640px) {
-      padding: 15px;
-      padding-bottom: 0px;
+  .titleContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-left: 10px;
+    .filterText {
+      font-size: 20px;
+
+      @media screen and (max-width: 640px) {
+        padding: 10px;
+        margin-top: 10px;
+        font-size: $fontSizeInfText;
+        padding-bottom: 0px;
+      }
+    }
+    .myFavText {
+      cursor: pointer;
+      text-decoration: underline;
+      a {
+        color: black;
+      }
+      @media screen and (max-width: 640px) {
+        font-size: $fontSizeSmallText;
+        padding: 10px;
+        padding-bottom: 0px;
+      }
     }
   }
   .gridContainer {
@@ -44,8 +67,23 @@
     max-width: 340px;
     margin: auto;
 
-    img {
-      border-radius: $smallImgContainerRadius;
+    .imgContainer {
+      width: 100%;
+      position: relative;
+      .img {
+        border-radius: $imgContainerRadius;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+      .hearth {
+        cursor: pointer;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        z-index: 9;
+        border-radius: 100%;
+      }
     }
 
     .content {
@@ -77,6 +115,6 @@
     gap: 1rem;
     overflow-x: auto;
     white-space: nowrap;
-    padding: 10px 0px;
+    padding: 10px 10px;
   }
 }

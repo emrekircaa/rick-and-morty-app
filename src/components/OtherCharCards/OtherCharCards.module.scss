@@ -21,6 +21,10 @@
       font-size: $fontSizeOtherNameText;
       font-weight: $fontWeightBold;
     }
+    .thinText {
+      font-size: $fontSizeOtherNameText;
+      font-weight: 400;
+    }
 
     .infoText {
       display: flex;

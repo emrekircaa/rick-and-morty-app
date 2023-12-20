@@ -1,6 +1,5 @@
 @import "../../assets/style/varibles";
-
-.cardContainer {
+@mixin cardContainer($width, $margin) {
   border: 1px solid $borderColor;
   padding: 10px;
   border-radius: $imgContainerRadius;
@@ -11,7 +10,11 @@
       border-radius: $imgContainerRadius;
       width: 100%;
       height: 100%;
+      min-height: 300px;
       object-fit: cover;
+      @media screen and (max-width: 1280px) {
+        max-height: 5000px;
+      }
     }
     .hearth {
       position: absolute;
@@ -32,6 +35,11 @@
       font-size: $fontSizeNameText;
       font-weight: $fontWeightBold;
       margin-bottom: 4px;
+      max-width: 250px;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .infoText {
@@ -41,5 +49,48 @@
       font-size: $fontSizeInfText;
       font-weight: $fontWeightMedium;
     }
+
+    div {
+      width: 100%;
+    }
   }
+
+  .status {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .isDetail {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    .extraData {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    max-width: $width;
+
+    @if $margin == true {
+      margin: auto;
+    }
+  }
+}
+
+.cardContainerFull {
+  @include cardContainer(100%, false);
+}
+
+.cardContainer {
+  @include cardContainer(340px, true);
 }

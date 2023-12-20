@@ -3,9 +3,10 @@ import Image from "next/image";
 import style from "./CharactersView.module.scss";
 import PagePagination from "@/components/Pagination/Pagination";
 import { useEffect, useState } from "react";
-import { ChevronIcon, StatusDot } from "@/components/Icons/Icons";
+import { ChevronIcon, Heart, StatusDot } from "@/components/Icons/Icons";
 import { usePathname, useRouter } from "next/navigation";
-
+import { useAppDistpach, useAppSelector } from "@/hooks/ReduxHook";
+import { addRemoveFav } from "@/store/feature/favSlice";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -13,12 +14,13 @@ import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Button from "@/components/Buttons/Button";
 import { useIsMobile } from "@/hooks/ScreenSizeHook";
-import { getLocations, getLocationsCharacters } from "@/services/location";
+import { getLocationsCharacters } from "@/services/location";
 import { getMultipleCharacters } from "@/services/characters";
 import { ILocation } from "@/models/ILocation";
 import CharacterCard from "@/components/CharacterCard/CharacterCard";
 import Loading from "@/components/Loading/Loading";
 import NoData from "@/components/NoData/NoData";
+import Link from "next/link";
 
 interface Location {
   name: string;
@@ -47,6 +49,8 @@ enum Color {
 }
 
 export default function CharactersView() {
+  const dispatch = useAppDistpach();
+  const favItems = useAppSelector((state) => state.fav.favItems);
   const router = useRouter();
   const pathName = usePathname();
   const isMobile = useIsMobile();
@@ -73,6 +77,11 @@ export default function CharactersView() {
       setItemOffset(newOffset);
       window.scrollTo(0, 0);
     }
+  };
+
+  const check = (id: number) => {
+    const found = favItems.findIndex((item) => item.id == id);
+    return found;
   };
 
   useEffect(() => {
@@ -127,48 +136,50 @@ export default function CharactersView() {
         <Loading />
       ) : (
         <>
+          {/* title name */}
+
+          <div className={style.titleContainer}>
+            <div className={style.filterText}>{data && `Filter by status`}</div>
+            <div className={style.myFavText}>
+              <Link href="/favorite">My Favorite</Link>
+            </div>
+          </div>
+          {/* filter Button section */}
+          {data && (
+            <div className={style.filterContainer}>
+              <Button
+                active={status == "Dead"}
+                title="Dead"
+                onClick={() => {
+                  status == "Dead" ? setStatus("") : setStatus("Dead");
+                }}
+              />
+              <Button
+                active={status == "Alive"}
+                title="Alive"
+                onClick={() =>
+                  status == "Alive" ? setStatus("") : setStatus("Alive")
+                }
+              />
+              <Button
+                active={status == "unknown"}
+                title="Unknown"
+                onClick={() =>
+                  status == "unknown" ? setStatus("") : setStatus("unknown")
+                }
+              />
+            </div>
+          )}
+          {/* Content Section*/}
           {filteredData && filteredData?.length > 0 ? (
             <>
-              {/* title name */}
-              <h2>
-                {filteredData &&
-                  filteredData.length > 0 &&
-                  filteredData[0]?.location?.name}
-              </h2>
-              {/* filter Button section */}
-              <div className={style.filterContainer}>
-                <Button
-                  active={status == "Dead"}
-                  title="Dead"
-                  onClick={() => {
-                    status == "Dead" ? setStatus("") : setStatus("Dead");
-                  }}
-                />
-                <Button
-                  active={status == "Alive"}
-                  title="Alive"
-                  onClick={() =>
-                    status == "Alive" ? setStatus("") : setStatus("Alive")
-                  }
-                />
-                <Button
-                  active={status == "unknown"}
-                  title="Unknown"
-                  onClick={() =>
-                    status == "unknown" ? setStatus("") : setStatus("unknown")
-                  }
-                />
-              </div>
-              {/* Content Section*/}
               <div className={style.gridContainer}>
                 {!isMobile ? (
                   filteredData && filteredData.length > 0 ? (
                     filteredData.map((item) => (
                       <CharacterCard
                         key={item.id?.toString()}
-                        name={item.name}
-                        src={item.image}
-                        status={item.status}
+                        data={item}
                         handleClick={() =>
                           router.push(`/character/detail/${item.id}`)
                         }
@@ -188,36 +199,12 @@ export default function CharactersView() {
                     {filteredData && filteredData.length > 0 ? (
                       filteredData.map((item) => (
                         <SwiperSlide key={item.id.toString()}>
-                          <div className={style.otherContent}>
-                            <Image
-                              className={style.img}
-                              src={item.image}
-                              alt=""
-                              width={600}
-                              height={600}
-                            />
-                            <div
-                              className={style.content}
-                              onClick={() =>
-                                router.push(`/character/detail/${item.id}`)
-                              }
-                            >
-                              <div>
-                                <div className={style.nameText}>
-                                  {item.name}
-                                </div>
-                                <div className={style.infText}>
-                                  <StatusDot
-                                    color={
-                                      Color[item?.status as keyof typeof Color]
-                                    }
-                                  />
-                                  {item?.status}
-                                </div>
-                              </div>
-                              <ChevronIcon />
-                            </div>
-                          </div>
+                          <CharacterCard
+                            handleClick={() =>
+                              router.push(`/character/detail/${item.id}`)
+                            }
+                            data={item}
+                          ></CharacterCard>
                         </SwiperSlide>
                       ))
                     ) : (
