@@ -1,12 +1,9 @@
 "use client";
-import Image from "next/image";
 import style from "./CharactersView.module.scss";
 import PagePagination from "@/components/Pagination/Pagination";
 import { useEffect, useState } from "react";
-import { ChevronIcon, Heart, StatusDot } from "@/components/Icons/Icons";
 import { usePathname, useRouter } from "next/navigation";
 import { useAppDistpach, useAppSelector } from "@/hooks/ReduxHook";
-import { addRemoveFav } from "@/store/feature/favSlice";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";

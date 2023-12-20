@@ -1,8 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import style from "./FavoriteView.module.scss";
-import { useAppDistpach, useAppSelector } from "@/hooks/ReduxHook";
-import FavoriteCard from "@/components/FavoriteCard/FavoriteCard";
+import { useAppSelector } from "@/hooks/ReduxHook";
 import Loading from "@/components/Loading/Loading";
 import NoData from "@/components/NoData/NoData";
 import CharacterCard from "@/components/CharacterCard/CharacterCard";
