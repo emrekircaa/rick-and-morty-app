@@ -1,13 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ICharacter } from "@/models/ICharacter";
-import { getItem, setItem } from "@/helpers/utils";
 
 interface initialState {
   favItems: ICharacter[];
 }
 
 const initialState: initialState = {
-  favItems: getItem("favItems") || [],
+  favItems: [],
 };
 
 const favReducer = createSlice({
@@ -22,10 +21,8 @@ const favReducer = createSlice({
         state.favItems = state.favItems.filter(
           (item) => item.id !== action.payload.id
         );
-        localStorage.setItem("favItems", JSON.stringify(state.favItems));
       } else {
         state.favItems.push(action.payload);
-        localStorage.setItem("favItems", JSON.stringify(state.favItems));
       }
     },
   },
