@@ -1,12 +1,7 @@
 import Image from "next/image";
 import style from "./OtherCharCards.module.scss";
-import { StatusDot } from "../Icons/Icons";
 import { ICharacter } from "@/models/ICharacter";
-enum Color {
-  Alive = "green",
-  Dead = "red",
-  unknown = "#cecece",
-}
+
 interface OtherCardProps {
   data: ICharacter;
   handeClick: () => void;
