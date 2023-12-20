@@ -3,6 +3,7 @@ import { Silkscreen } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+import ReduxProvider from "./provide";
 
 const inter = Silkscreen({
   weight: ["400", "700"],
@@ -18,9 +19,10 @@ export default function RootLayout({
   return (
     <html>
       <body suppressHydrationWarning={true} className={inter.className}>
-        <Navbar />
-        <div className="main">{children}</div>
-        <Footer />
+        <ReduxProvider>
+          <Navbar />
+          <div className="main">{children}</div>
+        </ReduxProvider>
       </body>
     </html>
   );

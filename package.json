@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
+    "@reduxjs/toolkit": "^2.0.1",
     "axios": "^1.6.2",
     "install": "^0.13.0",
     "next": "14.0.4",
@@ -18,6 +19,7 @@
     "react-dom": "^18",
     "react-icons": "^4.12.0",
     "react-paginate": "^8.2.0",
+    "react-redux": "^9.0.4",
     "sass": "^1.69.5",
     "swiper": "^11.0.5"
   },
