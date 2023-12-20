@@ -47,7 +47,9 @@ const DetailCard: React.FC<LocationCardProps> = ({
         <div className={style.infoContainer}>
           <div className={style.infoText}>
             <StatusDot color={Color[status as unknown as keyof typeof Color]} />
-            {status} - {species} {type && `- ${type}`}
+            <span>
+              {status} - {species} {type && `- ${type}`}
+            </span>
           </div>
           <div>{gender}</div>
         </div>

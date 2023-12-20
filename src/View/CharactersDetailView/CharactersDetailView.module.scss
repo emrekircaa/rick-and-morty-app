@@ -5,7 +5,7 @@
   border: 1px solid $borderColor;
   border-top: none;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 960px) {
     flex-direction: column !important;
   }
 }
@@ -61,7 +61,7 @@
 }
 
 // Media Query
-@media (max-width: 800px) {
+@media (max-width: 960px) {
   .container {
     grid-template-columns: 1fr;
   }

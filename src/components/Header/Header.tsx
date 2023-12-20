@@ -9,17 +9,19 @@ function Navbar() {
 
   return (
     <div className={style.headerContainer}>
-      <div className={style.headerItem}>
-        {pathName !== "/" ? (
-          <div className={style.backButton} onClick={() => router.back()}>
-            <BackIcon />
-          </div>
-        ) : null}
+      <div className={style.headerWrapper}>
+        <div className={style.headerItem}>
+          {pathName !== "/" ? (
+            <div className={style.backButton} onClick={() => router.back()}>
+              <BackIcon />
+            </div>
+          ) : null}
+        </div>
+        <div className={style.headerItem}>
+          <h3>Rick & Morthy</h3>
+        </div>
+        <div className={style.headerItem}></div>
       </div>
-      <div className={style.headerItem}>
-        <h3>Rick & Morthy</h3>
-      </div>
-      <div className={style.headerItem}></div>
     </div>
   );
 }

@@ -24,6 +24,9 @@
   }
   .infoContainer {
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     .nameText {
       margin-top: 8px;
       font-size: $fontSizeNameText;

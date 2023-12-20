@@ -2,22 +2,22 @@
 .cardContainer {
   padding: 10px;
   text-align: center;
-  border-radius: $imgContainerRadius; // Use the variable
-  border: 1px solid $borderColor; // Use the variable
+  border-radius: $imgContainerRadius;
+  border: 1px solid $borderColor;
 
   .title {
     text-align: flex-start;
     margin-bottom: 8px;
-    font-size: $fontSizeOtherNameText; // Use the variable
-    font-weight: $fontWeightBold; // Use the variable
+    font-size: $fontSizeOtherNameText;
+    font-weight: $fontWeightBold;
   }
 
   ul {
-    border: 1px solid $borderColor; // Use the variable
-    border-radius: $smallImgContainerRadius; // Use the variable
+    border: 1px solid $borderColor;
+    border-radius: $smallImgContainerRadius;
 
     li {
-      border-bottom: 1px solid $borderColor; // Use the variable
+      border-bottom: 1px solid $borderColor;
       padding: 10px !important;
 
       &:last-child {
@@ -44,11 +44,12 @@
     grid-template-columns: repeat(2, 1fr);
 
     .leftText {
-      font-size: $fontSizeInfText; // Use the variable
+      font-size: $fontSizeInfText;
       justify-content: flex-start;
       display: flex;
       font-weight: 300;
-      border-right: 1px solid $borderColor; // Use the variable
+      border-right: 1px solid $borderColor;
+      text-align: left;
     }
 
     .rightText {
@@ -58,7 +59,7 @@
       justify-content: flex-start;
       text-overflow: ellipsis;
       overflow: hidden;
-      font-weight: $fontWeightMedium; // Use the variable
+      font-weight: $fontWeightMedium;
       text-align: left;
     }
   }

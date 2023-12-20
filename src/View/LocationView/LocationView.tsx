@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { getLocations } from "@/services/location";
 import { ILocationResponse } from "@/models/ILocation";
 import Loading from "@/components/Loading/Loading";
+import NoData from "@/components/NoData/NoData";
 
 export default function LocationView() {
   const [pageCount, setPageCount] = useState<number>();
@@ -37,25 +38,29 @@ export default function LocationView() {
         <Loading />
       ) : (
         <>
-          <div className={style.gridContainer}>
-            {data &&
-              data.length > 0 &&
-              data?.map((item: any) => (
-                <LocationCard
-                  key={item.id.toString()}
-                  id={item.id}
-                  name={item.name}
-                  type={item.type}
-                  dimension={item.dimension}
-                  residents={item?.residents}
-                />
-              ))}
-          </div>
+          {data && data.length > 0 ? (
+            <>
+              <div className={style.gridContainer}>
+                {data.map((item: any) => (
+                  <LocationCard
+                    key={item.id.toString()}
+                    id={item.id}
+                    name={item.name}
+                    type={item.type}
+                    dimension={item.dimension}
+                    residents={item?.residents}
+                  />
+                ))}
+              </div>
 
-          <PagePagination
-            handlePageClick={handlePageClick}
-            pageCount={pageCount}
-          />
+              <PagePagination
+                handlePageClick={handlePageClick}
+                pageCount={pageCount}
+              />
+            </>
+          ) : (
+            <NoData />
+          )}
         </>
       )}
     </>

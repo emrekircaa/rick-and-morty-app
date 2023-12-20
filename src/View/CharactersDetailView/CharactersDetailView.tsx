@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { ICharacter } from "@/models/ICharacter";
 import OtherCharCards from "@/components/OtherCharCards/OtherCharCards";
 import Loading from "@/components/Loading/Loading";
+import NoData from "@/components/NoData/NoData";
 
 function CharactersDetailView() {
   const router = useRouter();
@@ -100,7 +101,7 @@ function CharactersDetailView() {
                 />
               ))
             ) : (
-              <p>No other characters available.</p>
+              <NoData />
             )}
           </div>
         </>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import style from "./CharacterCard.module.scss";
 import React from "react";
-import { Heart, StatusDot } from "../Icons/Icons";
+import { Heart, StatusDot, ChevronIcon } from "../Icons/Icons";
 
 interface LocationCardProps {
   status: string;
@@ -37,11 +37,14 @@ const CharacterCard: React.FC<LocationCardProps> = ({
         />
       </div>
       <div className={style.infoContainer} onClick={handleClick}>
-        <div className={style.nameText}>{name}</div>
-        <div className={style.infoText}>
-          <StatusDot color={Color[status as keyof typeof Color]} />
-          {status}
+        <div>
+          <div className={style.nameText}>{name}</div>
+          <div className={style.infoText}>
+            <StatusDot color={Color[status as keyof typeof Color]} />
+            {status}
+          </div>
         </div>
+        <ChevronIcon />
       </div>
     </div>
   );

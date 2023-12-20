@@ -3,19 +3,29 @@
 .headerContainer {
   position: sticky;
   top: 0;
-  display: flex;
   width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  height: 100px;
   background-color: white;
   border-bottom: 0.1rem solid rgba(17, 176, 200, 0.11);
   z-index: 99;
+
+  .headerWrapper {
+    max-width: 1440px;
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+  }
+
   .backButton {
     cursor: pointer;
   }
+
   .headerItem {
     padding: 10px;
     min-width: 200px;
+    @media screen and (max-width: 640px) {
+      min-width: fit-content !important;
+    }
   }
 }

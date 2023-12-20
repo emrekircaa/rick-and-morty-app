@@ -3,7 +3,7 @@ import Image from "next/image";
 import style from "./CharactersView.module.scss";
 import PagePagination from "@/components/Pagination/Pagination";
 import { useEffect, useState } from "react";
-import { StatusDot } from "@/components/Icons/Icons";
+import { ChevronIcon, StatusDot } from "@/components/Icons/Icons";
 import { usePathname, useRouter } from "next/navigation";
 
 import "swiper/css";
@@ -18,6 +18,7 @@ import { getMultipleCharacters } from "@/services/characters";
 import { ILocation } from "@/models/ILocation";
 import CharacterCard from "@/components/CharacterCard/CharacterCard";
 import Loading from "@/components/Loading/Loading";
+import NoData from "@/components/NoData/NoData";
 
 interface Location {
   name: string;
@@ -59,6 +60,7 @@ export default function CharactersView() {
   const [pageCount, setPageCount] = useState<number>();
   const [itemOffset, setItemOffset] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
+
   const getLastItem = async (str: string) => {
     const items = str.split("/");
     setCurrentId(items[items.length - 1]);
@@ -125,7 +127,7 @@ export default function CharactersView() {
         <Loading />
       ) : (
         <>
-          {filteredData && filteredData.length > 0 ? (
+          {filteredData && filteredData?.length > 0 ? (
             <>
               {/* title name */}
               <h2>
@@ -194,22 +196,32 @@ export default function CharactersView() {
                               width={600}
                               height={600}
                             />
-                            <div className={style.content}>
-                              <div className={style.nameText}>{item.name}</div>
-                              <div className={style.infText}>
-                                <StatusDot
-                                  color={
-                                    Color[item?.status as keyof typeof Color]
-                                  }
-                                />
-                                {item?.status}
+                            <div
+                              className={style.content}
+                              onClick={() =>
+                                router.push(`/character/detail/${item.id}`)
+                              }
+                            >
+                              <div>
+                                <div className={style.nameText}>
+                                  {item.name}
+                                </div>
+                                <div className={style.infText}>
+                                  <StatusDot
+                                    color={
+                                      Color[item?.status as keyof typeof Color]
+                                    }
+                                  />
+                                  {item?.status}
+                                </div>
                               </div>
+                              <ChevronIcon />
                             </div>
                           </div>
                         </SwiperSlide>
                       ))
                     ) : (
-                      <div>Data not available</div>
+                      <NoData />
                     )}
                   </Swiper>
                 )}
@@ -220,7 +232,7 @@ export default function CharactersView() {
               />
             </>
           ) : (
-            <div>asdasd</div>
+            <NoData />
           )}
         </>
       )}
